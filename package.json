@@ -1,0 +1,96 @@
+{
+  "name": "venura",
+  "publisher": "venura",
+  "displayName": "Code Speaks",
+  "description": "Play different sounds for terminal events, code errors, warnings, and more. Keep your ears on your code!",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/venura/code-speaks"
+  },
+  "engines": {
+    "vscode": "^1.109.0"
+  },
+  "categories": [
+    "Other",
+    "Notifications"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "venura.testSounds",
+        "title": "Code Speaks: Test Sounds"
+      },
+      {
+        "command": "venura.toggle",
+        "title": "Code Speaks: Toggle Sounds"
+      },
+      {
+        "command": "venura.openSoundsFolder",
+        "title": "Code Speaks: Open Sounds Folder"
+      }
+    ],
+    "configuration": {
+      "title": "Code Speaks",
+      "properties": {
+        "codeSpeak.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable or disable Code Speaks sound notifications"
+        },
+        "codeSpeak.volumeLevel": {
+          "type": "number",
+          "default": 0.7,
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Volume level for sounds (0-1)"
+        },
+        "codeSpeak.soundOnTerminalSuccess": {
+          "type": "boolean",
+          "default": true,
+          "description": "Play sound when terminal command succeeds"
+        },
+        "codeSpeak.soundOnTerminalFail": {
+          "type": "boolean",
+          "default": true,
+          "description": "Play sound when terminal command fails"
+        },
+        "codeSpeak.soundOnWarning": {
+          "type": "boolean",
+          "default": true,
+          "description": "Play sound when code warnings are detected"
+        },
+        "codeSpeak.soundOnErrorIncrease": {
+          "type": "boolean",
+          "default": true,
+          "description": "Play sound when error count increases"
+        },
+        "codeSpeak.soundOnErrorDecrease": {
+          "type": "boolean",
+          "default": true,
+          "description": "Play sound when error count decreases"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "@types/vscode": "^1.109.0",
+    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.39.2"
+  },
+  "dependencies": {
+    "play-sound": "^1.1.6"
+  }
+}
